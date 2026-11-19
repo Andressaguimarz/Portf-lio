@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andressa Braz Guimarães | Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #050507;
+      --bg-card: #0e0e14;
+      --border-subtle: rgba(139, 92, 246, 0.25);
+      --purple-main: #7c3aed;
+      --purple-light: #a78bfa;
+      --text-primary: #ffffff;
+      --text-secondary: #9ca3af;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navbar */
+    header {
+      padding: 24px 0;
+      position: sticky;
+      top: 0;
+      background: rgba(5, 5, 7, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Pacifico', cursive;
+      color: var(--purple-main);
+      font-size: 1.4rem;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--purple-light);
+    }
+
+    /* Hero com Banner Abstrato Roxo embutido */
+    .hero {
+      text-align: center;
+      padding: 130px 24px;
+      margin: 20px 0 50px 0;
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      background: radial-gradient(circle at 60% 35%, #3b0764 0%, #190933 48%, #070510 100%);
+      box-shadow: 0 20px 50px rgba(88, 28, 135, 0.28);
+    }
+
+    .hero-bg-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(5, 5, 7, 0.3) 0%, rgba(5, 5, 7, 0.65) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Gatinho Pixel Art Animado no canto do banner */
+    .pixel-cat-wrapper {
+      position: absolute;
+      bottom: 14px;
+      right: 26px;
+      width: 82px;
+      height: 82px;
+      z-index: 3;
+      pointer-events: none;
+      filter: drop-shadow(0 0 8px rgba(192, 132, 252, 0.75));
+      animation: catBob 1.6s steps(2, end) infinite;
+    }
+
+    .pixel-cat-tail {
+      transform-origin: 4px 11px;
+      animation: tailWag 1.2s steps(2, end) infinite;
+    }
+
+    .pixel-cat-eyes {
+      animation: catBlink 3.8s steps(1, end) infinite;
+    }
+
+    @keyframes catBob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+
+    @keyframes tailWag {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-1px, -1px); }
+    }
+
+    @keyframes catBlink {
+      0%, 92%, 100% { opacity: 1; }
+      95% { opacity: 0; }
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(124, 58, 237, 0.28);
+      border: 1px solid rgba(192, 132, 252, 0.4);
+      color: #e9d5ff;
+      font-size: 0.8rem;
+      margin-bottom: 24px;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.75);
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #e9d5ff, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #f3f4f6;
+      margin-bottom: 18px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+    }
+
+    .hero p {
+      max-width: 580px;
+      margin: 0 auto 36px;
+      color: #e5e7eb;
+      font-size: 0.98rem;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--purple-main);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: #6d28d9;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(192, 132, 252, 0.45);
+      color: #fff;
+      background: rgba(15, 10, 30, 0.55);
+      padding: 12px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      backdrop-filter: blur(6px);
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: #c084fc;
+      background: rgba(124, 58, 237, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Sections */
+    section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .section-header-center {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-header-center p {
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin: 8px auto 0;
+      font-size: 0.92rem;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+
+    .about-text strong {
+      color: #f3f4f6;
+      font-weight: 600;
+    }
+
+    .profile-pic-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-pic-circle {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      border: 4px solid var(--purple-main);
+      overflow: hidden;
+      box-shadow: 0 0 28px rgba(124, 58, 237, 0.45);
+    }
+
+    .profile-pic-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* Skills com Ícones */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 22px;
+    }
+
+    .skill-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 28px 20px;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--purple-main);
+      box-shadow: 0 10px 25px rgba(124, 58, 237, 0.18);
+    }
+
+    .skill-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: rgba(124, 58, 237, 0.12);
+      border: 1px solid rgba(167, 139, 250, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .skill-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .skill-card span {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      color: var(--purple-light);
+      background: rgba(124, 58, 237, 0.06);
+    }
+
+    /* Experience */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .exp-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .year-badge {
+      min-width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--purple-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-top: 6px;
+    }
+
+    .exp-card {
+      flex: 1;
+    }
+
+    .exp-company {
+      color: var(--purple-light);
+      font-size: 0.82rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .exp-card p {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--purple-main);
+    }
+
+    .project-banner {
+      height: 150px;
+      background: linear-gradient(135deg, #2e1065, #5b21b6, #1e1b4b);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.85rem;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-banner.featured-game {
+      background: radial-gradient(circle at 50% 30%, #a78bfa 0%, #5b21b6 45%, #1e1b4b 100%);
+    }
+
+    .project-banner.featured-gta {
+      background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 52%, #1e1b4b 100%);
+    }
+
+    .project-banner span {
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.03em;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .project-banner small {
+      font-size: 0.72rem;
+      color: #e9d5ff;
+      margin-top: 4px;
+    }
+
+    .project-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-body h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .project-body p {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .project-footer {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .btn-details {
+      flex: 1;
+      background: var(--purple-main);
+      color: #fff;
+      text-align: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .btn-details:hover {
+      background: #6d28d9;
+    }
+
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--purple-light);
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--purple-main);
+      background: rgba(124, 58, 237, 0.14);
+      color: #fff;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      margin-bottom: 6px;
+      color: #e5e7eb;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: #08080c;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: #fff;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--purple-main);
+    }
+
+    .contact-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-right ul {
+      margin-top: 12px;
+      padding-left: 18px;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+    }
+
+    .direct-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 14px;
+      font-size: 0.88rem;
+    }
+
+    .direct-links a {
+      color: var(--purple-light);
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .direct-links a:hover {
+      text-decoration: underline;
+    }
+
+    .socials-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 0;
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      border-top: 1px solid rgba(139, 92, 246, 0.12);
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero {
+        padding: 80px 20px 110px;
+      }
+      .pixel-cat-wrapper {
+        width: 64px;
+        height: 64px;
+        right: 14px;
+        bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">andressa.dev</a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="#projects">Projetos</a></li>
+          <li><a href="#contact">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero com Banner Abstrato Roxo Ondulado -->
+    <section id="home" class="hero">
+      <svg class="hero-bg-svg" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0d0724"/>
+            <stop offset="50%" stop-color="#280b54"/>
+            <stop offset="100%" stop-color="#090514"/>
+          </linearGradient>
+          <linearGradient id="waveGrad1" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#311068" stop-opacity="0.1"/>
+            <stop offset="55%" stop-color="#7e22ce" stop-opacity="0.75"/>
+            <stop offset="100%" stop-color="#c084fc" stop-opacity="0.9"/>
+          </linearGradient>
+          <linearGradient id="waveGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#1e1b4b" stop-opacity="0.1"/>
+            <stop offset="50%" stop-color="#6d28d9" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#a855f7" stop-opacity="0.85"/>
+          </linearGradient>
+        </defs>
+
+        <rect width="1200" height="480" fill="url(#bgGrad)"/>
+
+        <path d="M -50 480 C 220 340, 480 40, 710 40 C 860 40, 860 360, 1020 480 Z" fill="url(#waveGrad1)"/>
+        <path d="M 280 480 C 380 330, 440 230, 540 230 C 660 230, 760 390, 910 480 Z" fill="url(#waveGrad2)"/>
+        <path d="M 850 480 C 930 260, 1010 10, 1140 10 C 1200 10, 1230 140, 1260 480 Z" fill="url(#waveGrad1)" opacity="0.55"/>
+
+        <g fill="none" stroke="#c084fc" stroke-width="0.75" opacity="0.32">
+          <path d="M -20 475 C 230 335, 485 45, 710 45 C 855 45, 855 355, 1010 475"/>
+          <path d="M 10 480 C 250 345, 495 65, 715 65 C 850 65, 850 365, 995 480"/>
+          <path d="M 40 485 C 270 355, 505 85, 720 85 C 845 85, 845 375, 980 485"/>
+          <path d="M 70 490 C 290 365, 515 105, 725 105 C 840 105, 840 385, 965 490"/>
+          <path d="M 100 495 C 310 375, 525 125, 730 125 C 835 125, 835 395, 950 495"/>
+
+          <path d="M 295 480 C 390 335, 445 235, 540 235 C 655 235, 755 390, 895 480"/>
+          <path d="M 315 485 C 405 345, 455 252, 545 252 C 650 252, 745 398, 880 485"/>
+          <path d="M 335 490 C 420 355, 465 270, 550 270 C 645 270, 735 405, 865 490"/>
+          <path d="M 355 495 C 435 365, 475 288, 555 288 C 640 288, 725 412, 850 495"/>
+        </g>
+      </svg>
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <span class="badge">Estudante de TI • Disponível para projetos</span>
+        <h1>Olá! Eu sou <span>Andressa</span></h1>
+        <h2>Desenvolvedora Web & Criadora com IA</h2>
+        <p>Crio sites modernos, interativos e criativos combinando fundamentos de programação com o poder da Inteligência Artificial.</p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn-primary">Ver Meus Projetos</a>
+          <a href="#contact" class="btn-outline">Entrar em Contato</a>
+        </div>
+      </div>
+
+      <!-- Gatinho Pixel Art Animado embutido no canto do banner -->
+      <div class="pixel-cat-wrapper" aria-hidden="true">
+        <svg viewBox="0 0 18 16" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+          <g class="pixel-cat-tail">
+            <rect x="2" y="7" width="1" height="4" fill="#090710"/>
+            <rect x="1" y="8" width="1" height="4" fill="#090710"/>
+            <rect x="2" y="8" width="1" height="4" fill="#1c192b"/>
+            <rect x="2" y="11" width="3" height="2" fill="#090710"/>
+          </g>
+          <rect x="7" y="1" width="1" height="2" fill="#090710"/>
+          <rect x="6" y="2" width="3" height="2" fill="#090710"/>
+          <rect x="13" y="1" width="1" height="2" fill="#090710"/>
+          <rect x="12" y="2" width="3" height="2" fill="#090710"/>
+          <rect x="7" y="2" width="1" height="1" fill="#31294a"/>
+          <rect x="13" y="2" width="1" height="1" fill="#31294a"/>
+          <rect x="6" y="3" width="9" height="6" fill="#090710"/>
+          <rect x="5" y="5" width="11" height="3" fill="#090710"/>
+          <rect x="7" y="4" width="7" height="4" fill="#181526"/>
+          <rect x="6" y="6" width="9" height="2" fill="#181526"/>
+          <rect x="5" y="9" width="9" height="5" fill="#090710"/>
+          <rect x="6" y="9" width="7" height="3" fill="#221e36"/>
+          <rect x="4" y="12" width="10" height="2" fill="#090710"/>
+          <rect x="5" y="14" width="9" height="1" fill="#090710"/>
+          <rect x="8" y="12" width="1" height="2" fill="#2e2947"/>
+          <rect x="10" y="12" width="1" height="2" fill="#2e2947"/>
+          <rect x="12" y="12" width="1" height="2" fill="#2e2947"/>
+          <g class="pixel-cat-eyes">
+            <rect x="8" y="5" width="1" height="2" fill="#e9d5ff"/>
+            <rect x="12" y="5" width="1" height="2" fill="#e9d5ff"/>
+          </g>
+          <rect x="10" y="7" width="1" height="1" fill="#c084fc"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2 class="section-title">Sobre Mim</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Meu nome é <strong>Andressa Braz Guimarães</strong>, tenho <strong>15 anos</strong> e atualmente estou fazendo curso técnico de <strong>TI no SENAI</strong>, onde venho dando os meus primeiros passos no universo da tecnologia e da programação.</p>
+          <p>Curto bastante programar e criar sites e jogos utilizando <strong>Inteligência Artificial</strong>, explorando a criação de <strong>prompts estratégicos e bem estruturados</strong> para transformar ideias criativas em páginas funcionais e visualmente marcantes.</p>
+          <p>Estou em constante aprendizado, buscando evoluir a cada novo projeto, aprimorar minha lógica de programação e unir criatividade com tecnologia.</p>
+        </div>
+        <div class="profile-pic-box">
+          <div class="profile-pic-circle">
+            <img src="c:\Users\andressa_guimarae152\Downloads\WhatsApp Image 2026-11-19 at 15.58.24.jpeg" alt="Andressa Braz Guimarães">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills & Tecnologias -->
+    <section id="skills">
+      <h2 class="section-title">Skills & Tecnologias</h2>
+      <div class="skills-grid">
+        <!-- HTML -->
+        <div class="card skill-card">
+          <div class="skill-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+              <path d="M4 3L5.5 19.5L12 21.5L18.5 19.5L20 3H4Z" fill="#E44D26"/>
+              <path d="M12 4.5V19.9L17.2 18.4L18.4 4.5H12Z" fill="#F16529"/>
+              <path d="M12 10.5H8.8L8.6 8H12V5.8H6.2L6.8 12.7H12V10.5ZM12 16.3L9.4 15.6L9.2 13.7H7L7.3 17.3L12 18.6V16.3Z" fill="#EBEBEB"/>
+              <path d="M12 10.5V12.7H14.9L14.6 15.6L12 16.3V18.6L16.7 17.3L17.3 10.5H12ZM12 5.8V8H17.5L17.7 5.8H12Z" fill="#FFFFFF"/>
+            </svg>
+          </div>
+          <h3>HTML</h3>
+          <span>Estruturação de páginas web</span>
+        </div>
+
+        <!-- CSS -->
+        <div class="card skill-card">
+          <div class="skill-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+              <path d="M4 3L5.5 19.5L12 21.5L18.5 19.5L20 3H4Z" fill="#1572B6"/>
+              <path d="M12 4.5V19.9L17.2 18.4L18.4 4.5H12Z" fill="#33A9DC"/>
+              <path d="M12 10.5H8.5L8.7 12.7H12V10.5ZM12 5.8H6.2L6.4 8H12V5.8ZM12 16.3L9.4 15.6L9.2 13.7H7L7.3 17.3L12 18.6V16.3Z" fill="#EBEBEB"/>
+              <path d="M12 10.5V12.7H14.9L14.6 15.6L12 16.3V18.6L16.7 17.3L17.5 8H17.7L17.9 5.8H12V8H15.3L15.1 10.5H12Z" fill="#FFFFFF"/>
+            </svg>
+          </div>
+          <h3>CSS</h3>
+          <span>Estilização, cores e layouts</span>
+        </div>
+
+        <!-- JavaScript -->
+        <div class="card skill-card">
+          <div class="skill-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="3" fill="#F7DF1E"/>
+              <path d="M10.8 16.6C10.8 17.8 10.1 18.5 8.9 18.5C7.9 18.5 7.3 17.9 7 17.2L8.3 16.4C8.5 16.8 8.7 17.1 9.1 17.1C9.5 17.1 9.7 16.9 9.7 16.3V11.8H10.8V16.6ZM14.6 18.5C13.3 18.5 12.4 17.9 12 17L13.2 16.2C13.5 16.8 14 17.1 14.7 17.1C15.3 17.1 15.7 16.8 15.7 16.4C15.7 15.9 15.3 15.7 14.4 15.3L13.9 15.1C12.7 14.6 12.1 13.9 12.1 12.7C12.1 11.5 13 10.6 14.4 10.6C15.4 10.6 16.2 11 16.6 11.9L15.4 12.6C15.1 12.1 14.8 11.9 14.4 11.9C13.9 11.9 13.6 12.2 13.6 12.6C13.6 13.1 13.9 13.3 14.8 13.7L15.3 13.9C16.7 14.5 17.3 15.1 17.3 16.4C17.3 17.8 16.2 18.5 14.6 18.5Z" fill="#111111"/>
+            </svg>
+          </div>
+          <h3>JavaScript</h3>
+          <span>Interatividade e lógica na web</span>
+        </div>
+
+        <!-- Portugol -->
+        <div class="card skill-card">
+          <div class="skill-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="16" rx="3" fill="rgba(124, 58, 237, 0.2)"/>
+              <polyline points="8 9 5 12 8 15"/>
+              <polyline points="16 9 19 12 16 15"/>
+              <line x1="13" y1="8" x2="11" y2="16"/>
+            </svg>
+          </div>
+          <h3>Portugol</h3>
+          <span>Algoritmos e lógica de programação</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience / Formação -->
+    <section id="experience">
+      <h2 class="section-title">Formação & Experiência</h2>
+      <div class="exp-list">
+        <div class="exp-item">
+          <div class="year-badge">2026</div>
+          <div class="card exp-card">
+            <h3>Curso Técnico de Informática para Internet</h3>
+            <span class="exp-company">SENAI • Em andamento</span>
+            <p>Aprendizado prático em lógica de programação com Portugol, desenvolvimento web com HTML, CSS e JavaScript, além de criação de interfaces e projetos digitais.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="section-header-center">
+        <h2 class="section-title" style="margin-bottom: 0;">Meus Projetos</h2>
+        <p>Uma seleção de projetos em que trabalhei, desde aplicações web até jogos e interfaces interativas.</p>
+      </div>
+      <div class="projects-grid">
+        <!-- Projeto 01: Filhos da Luz -->
+        <div class="project-card">
+          <a href="https://andressaguimarz.github.io/jogo3/" target="_blank" rel="noopener noreferrer" class="project-banner featured-game">
+            <span>✦ Filhos da Luz ✦</span>
+            <small>Clique para jogar online</small>
+          </a>
+          <div class="project-body">
+            <h3>Filhos da Luz</h3>
+            <p>Jogo PvP inspirado na atmosfera mágica de Sky: Filhos da Luz, desenvolvido totalmente com Inteligência Artificial.</p>
+            <div class="tags">
+              <span class="tag">Game PvP</span>
+              <span class="tag">Criado com IA</span>
+              <span class="tag">Web</span>
+            </div>
+            <div class="project-footer">
+              <a href="https://andressaguimarz.github.io/jogo3/" target="_blank" rel="noopener noreferrer" class="btn-details">Jogar Agora</a>
+              <a href="https://github.com/Andressaguimarz/jogo3" target="_blank" rel="noopener noreferrer" class="icon-btn" title="Código no GitHub">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 02: Campanha GTA VI -->
+        <div class="project-card">
+          <a href="file:///C:/Users/andressa_guimarae152/Downloads/site%20oficial%20(3).html" target="_blank" rel="noopener noreferrer" class="project-banner featured-gta">
+            <span>✦ GTA VI — Campanha Oficial ✦</span>
+            <small>Clique para abrir o site</small>
+          </a>
+          <div class="project-body">
+            <h3>Landing Page Promocional GTA VI</h3>
+            <p>Site promocional de divulgação do GTA VI com estética neon de Vice City, desenvolvido totalmente com Inteligência Artificial.</p>
+            <div class="tags">
+              <span class="tag">Landing Page</span>
+              <span class="tag">Criado com IA</span>
+              <span class="tag">HTML/CSS</span>
+            </div>
+            <div class="project-footer">
+              <a href="file:///C:/Users/andressa_guimarae152/Downloads/site%20oficial%20(3).html" target="_blank" rel="noopener noreferrer" class="btn-details">Ver Site</a>
+              <a href="https://github.com/Andressaguimarz" target="_blank" rel="noopener noreferrer" class="icon-btn" title="Repositório GitHub">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 03 -->
+        <div class="project-card">
+          <div class="project-banner">Em Breve</div>
+          <div class="project-body">
+            <h3>Projeto 03</h3>
+            <p>Novo projeto em desenvolvimento durante o curso de Informática para Internet no SENAI.</p>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+            <div class="project-footer">
+              <a href="https://github.com/Andressaguimarz" target="_blank" rel="noopener noreferrer" class="btn-details">Ver no GitHub</a>
+              <a href="https://github.com/Andressaguimarz" target="_blank" rel="noopener noreferrer" class="icon-btn" title="Repositório GitHub">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-header-center">
+        <h2 class="section-title">Vamos Trabalhar Juntos</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="card">
+          <h3>Envie uma mensagem</h3>
+          <form id="contactForm" style="margin-top: 16px;">
+            <div class="form-group">
+              <label for="name">Nome</label>
+              <input type="text" id="name" placeholder="Seu nome" required />
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" placeholder="seu@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Mensagem</label>
+              <textarea id="message" rows="4" placeholder="Conte sobre seu projeto..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer;">Enviar Mensagem pelo Gmail</button>
+          </form>
+        </div>
+
+        <div class="contact-right">
+          <div class="card">
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+              Estou sempre aberta a discutir novas ideias, projetos criativos ou oportunidades de aprendizado.
+            </p>
+            <ul>
+              <li>Criação de Sites & Landing Pages</li>
+              <li>Projetos Web com Inteligência Artificial</li>
+              <li>Design de Interfaces Criativas</li>
+            </ul>
+            <div class="direct-links">
+              <div><strong>E-mail:</strong> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=andressabrazguimaraess@gmail.com" target="_blank" rel="noopener noreferrer">andressabrazguimaraess@gmail.com</a></div>
+              <div><strong>GitHub:</strong> <a href="https://github.com/Andressaguimarz" target="_blank" rel="noopener noreferrer">github.com/Andressaguimarz</a></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Minhas Redes</h3>
+            <div class="socials-row">
+              <a href="https://github.com/Andressaguimarz" target="_blank" rel="noopener noreferrer" class="icon-btn" title="GitHub">
+                <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+              </a>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=andressabrazguimaraess@gmail.com" target="_blank" rel="noopener noreferrer" class="icon-btn" title="Abrir no Gmail">
+                <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Andressa Braz Guimarães. Desenvolvido com código e criatividade.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const to = 'andressabrazguimaraess@gmail.com';
+      const subject = encodeURIComponent(`Contato pelo Portfólio - ${name}`);
+      const body = encodeURIComponent(`Nome: ${name}\nE-mail: ${email}\n\nMensagem:\n${message}`);
+
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subject}&body=${body}`;
+      window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+    });
+  </script>
+
+</body>
+</html>
